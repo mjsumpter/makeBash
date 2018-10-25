@@ -1,9 +1,11 @@
+#!/usr/bin/tcc -run
+
 /*****************************************************************************
  *
  * makeBash.c
  * Author: Matthew Sumpter
  *
- * makeBash receives user commands and writes them to a bashfile
+ * makeBash receives user commands and writes them to a bashfile.
  * 
  * *************************************************************************/
 
