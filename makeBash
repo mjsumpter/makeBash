@@ -4,13 +4,16 @@
  *
  * makeBash.c
  * Author: Matthew Sumpter
+ * GitHub: github.com/mjsumpter/makeBash
  *
  * makeBash receives user commands and writes them to a bashfile.
  * 
  * *************************************************************************/
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
 #define FILELEN 100
 #define STRLEN 1000
 
@@ -52,6 +55,7 @@ int main(int argc, char *argv[])
 	fprintf(bashFile, "# Created using makeBash\n");
 	fprintf(bashFile, "#!/usr/bin/expect -f\n\n");
 
+	//recieve command line arguments from user
 	do
 	{
 		memset(userInput, 0, sizeof(userInput));  //clear userInput
@@ -64,6 +68,12 @@ int main(int argc, char *argv[])
 	while(1);
 
 	fclose(bashFile);
+
+	// make script executable
+	int permission = strtol("0777", 0, 8);
+	chmod(filename, permission);
+	
+	printf("Creation of %s was successful.\n", filename);
 
 	return 0;
 }
